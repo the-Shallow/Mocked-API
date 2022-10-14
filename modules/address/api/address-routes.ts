@@ -7,23 +7,41 @@ import { getCountryNameFromRequest } from '../../../utils/route-utils';
 module.exports = function(app : core.Express) {
 
 	// get a random address (by default, a USA format address is returned)
-
+	
 	/**
 	 * @openapi
 	 * "/address":
-	 *   get:
-	 *     tags:
-	 *     - Address
-	 *     summary: Obtain a USA address (by default)
-	 *     responses:
-	 *       '200':
-	 *         description: An array of single address string
-	 * 		   schema:
-	 *           type: array
-	 *           items:
-	 *             type: string
-	 *             example: ['Andrew Kappa\n3686 Capital Lakeview\nLahore 2344\nUSA']
+	 *	get:
+	 *		tags:
+	 *			- Address
+	 *			  summary:Obtain a USA address(by default)
+	 *	responses:
+	 *		'200':
+	 *			description: An array of single address string
+	 *			schema:
+	 *				type:array
+	 *				items:
+	 *					type:string
+	 *					example: ['Andrew Kappa\n3686 Capital Lakeview\nLahore 2344\nUSA']
 	 */
+	
+
+	/** 
+	@openapi
+	"/address":
+		get:
+			tags:
+				- Address
+			  	  summary: Obtain a USA address (by default)
+		responses:
+			'200':
+				description: An array of single address string
+				schema:
+					type: array
+					items:
+						type: string
+						example: ['Andrew Kappa\n3686 Capital Lakeview\nLahore 2344\nUSA']
+	*/
 	app.get('/address', (req: Request, res: Response) => {
 		const address = getRandomAddresses();
 		res.json(address);
